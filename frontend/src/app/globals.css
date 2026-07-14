@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+ * Data-viz palette. Values come from the validated reference palette:
+ * categorical slot 1 (blue) and slot 2 (aqua), each stepped per mode.
+ * Both modes pass the lightness-band, chroma-floor and CVD-separation checks.
+ * Light-mode aqua sits below 3:1 contrast, so charts using it ship direct
+ * labels + legend (the "relief rule") — identity is never color alone.
+ */
+.viz-root {
+  --series-1: #2a78d6; /* blue  — revenue */
+  --series-2: #1baf7a; /* aqua  — profit */
+  --series-3: #eda100; /* yellow — third categorical slot */
+  --viz-grid: #e1e0d9;
+  --viz-axis: #c3c2b7;
+  --viz-muted: #898781;
+  --viz-surface: #ffffff;
+  --viz-text: #0b0b0b;
+  --viz-text-secondary: #52514e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .viz-root {
+    --series-1: #3987e5;
+    --series-2: #199e70;
+    --series-3: #c98500;
+    --viz-grid: #2c2c2a;
+    --viz-axis: #383835;
+    --viz-muted: #898781;
+    --viz-surface: #030712;
+    --viz-text: #ffffff;
+    --viz-text-secondary: #c3c2b7;
+  }
+}

@@ -1,0 +1,19 @@
+# Secrets and local state — never commit these.
+.env
+.env.local
+*.db
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# OS
+.DS_Store
+Thumbs.db

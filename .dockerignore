@@ -1,0 +1,23 @@
+# Never ship secrets or local state into the image.
+**/.env
+**/.env.local
+**/*.db
+
+# Local virtualenv / dependencies — reinstalled in the image.
+backend/.venv/
+frontend/node_modules/
+
+# Build artifacts — regenerated inside the image.
+frontend/.next/
+frontend/out/
+
+# Caches and cruft.
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+.git/
+.gitignore
+
+# Docs and design notes aren't needed at runtime.
+*.md
+!README.md
