@@ -1,4 +1,24 @@
-# Vercel's Python runtime installs from the requirements.txt at the project
-# root. The real dependency list lives with the backend — referenced here so
-# the two can never drift apart.
--r backend/requirements.txt
+# Vercel's Python runtime installs from the requirements.txt at the project root.
+#
+# This duplicates backend/requirements.txt because Vercel's parser does not
+# support `-r` includes (it fails the build with "could not parse
+# requirements.txt"). tests/test_requirements_sync.py fails if the two files
+# ever drift apart — keep them identical.
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+sqlalchemy==2.0.36
+alembic==1.14.0
+pydantic==2.10.3
+pydantic-settings==2.6.1
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+python-multipart==0.0.19
+psycopg2-binary==2.9.10
+python-dotenv==1.0.1
+email-validator==2.2.0
+slowapi==0.1.9
+
+# Optional: enables LLM phrasing of agent facts. The system runs fully without
+# a GROQ_API_KEY (agents fall back to deterministic template wording).
+groq==0.13.1

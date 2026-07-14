@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
   // file server (Starlette's StaticFiles with html=True) resolves /dashboard/.
   trailingSlash: true,
 
+  // ...but do NOT emit the automatic "add a trailing slash" redirect. On Vercel
+  // that redirect also matches /api/*, so /api/health 308s to /api/health/,
+  // which FastAPI then 307s back to /api/health — an infinite loop that makes
+  // the whole API unreachable. Skipping the redirect keeps the file layout
+  // above while letting /api/* reach the Python function untouched.
+  skipTrailingSlashRedirect: true,
+
   // No image optimizer exists in a static export.
   images: { unoptimized: true },
 };
