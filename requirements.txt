@@ -1,0 +1,4 @@
+# Vercel's Python runtime installs from the requirements.txt at the project
+# root. The real dependency list lives with the backend — referenced here so
+# the two can never drift apart.
+-r backend/requirements.txt
